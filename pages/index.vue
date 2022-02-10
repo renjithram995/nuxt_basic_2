@@ -3,13 +3,42 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList />
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  asyncData (context, callback) { // Nuxt will execute this method only in pages component
+    // will not get this keyword
+    console.log('context')
+    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+    setTimeout(() => {
+      callback(null, { // pass error as null
+        loadedPosts: [
+          {
+            id: '1',
+            title: 'Preview Title',
+            previewText: 'Preview Text',
+            thumbnail: require('~/assets/images/shoe-1.png')
+          },
+          {
+            id: '2',
+            title: 'Preview Title2',
+            previewText: 'Lorem asdasdasd',
+            thumbnail: require('~/assets/images/shoe-2.png')
+          }
+        ]
+      })
+    }, 1500)
+  },
+  data () {
+    return {
+      loadedPosts: []
+    }
+  },
+  created () { }
 }
 </script>
 
@@ -21,7 +50,7 @@ export default {
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
-  background-image: url('~assets/images/main-page-background.jpg');
+  background-image: url("~assets/images/main-page-background.jpg");
 }
 
 .intro h1 {
