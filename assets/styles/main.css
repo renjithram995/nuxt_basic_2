@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Open Sans-light'; /*300*/
+    src: url('~/assets/fonts/OpenSans-Light.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-light-italic'; /*300*/
+    src: url('~/assets/fonts/OpenSans-LightItalic.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans'; /*400*/
+    src: url('~/assets/fonts/OpenSans-Regular.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-italic'; /*400*/
+    src: url('~/assets/fonts/OpenSans-Italic.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-medium'; /*500*/
+    src: url('~/assets/fonts/OpenSans-Medium.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-medium-italic'; /*500*/
+    src: url('~/assets/fonts/OpenSans-MediumItalic.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-semi-bold'; /*600*/
+    src: url('~/assets/fonts/OpenSans-SemiBold.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-semi-bold-italic'; /*600*/
+    src: url('~/assets/fonts/OpenSans-SemiBoldItalic.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-bold'; /*700*/
+    src: url('~/assets/fonts/OpenSans-Bold.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-bold-italic'; /*700*/
+    src: url('~/assets/fonts/OpenSans-BoldItalic.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-extra-bold'; /*800*/
+    src: url('~/assets/fonts/OpenSans-ExtraBold.ttf')  format('truetype');
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'Open Sans-extra-bold-italic'; /*800*/
+    src: url('~/assets/fonts/OpenSans-ExtraBoldItalic.ttf')  format('truetype');
+    font-display: fallback;
+}
+body{
+    margin: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+body, html,input, select, textarea, button {
+    font-family: 'Open Sans', sans-serif;
+}

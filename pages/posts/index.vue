@@ -1,0 +1,19 @@
+<template>
+  <div class="posts-page">
+    asdadasdasd
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PostIndex'
+}
+</script>
+
+<style scoped>
+.posts-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
