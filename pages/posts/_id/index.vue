@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'PostSpecific',
-  asyncData (context, callBack) {// Nuxt will execute this method only in pages component
+  asyncData (context, callBack) { // Nuxt will execute this method only in pages component
     // will not get this keyword
     // loadedpost will get created by the callback object parameter
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
