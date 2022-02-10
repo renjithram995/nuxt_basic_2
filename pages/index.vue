@@ -3,14 +3,7 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <section class="featured-posts">
-      <post-preview id="1" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-1.png')" />
-      <post-preview id="2" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-2.png')" />
-      <post-preview id="3" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-3.png')" />
-      <post-preview id="4" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-4.png')" />
-      <post-preview id="5" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-5.png')" />
-      <post-preview id="6" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-6.png')" />
-    </section>
+    <PostList />
   </div>
 </template>
 
@@ -50,14 +43,5 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 </style>

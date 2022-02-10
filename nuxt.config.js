@@ -33,7 +33,8 @@ export default {
     dirs: [
       '~/components',
       '~/components/posts',
-      '~/components/Navigation'
+      '~/components/Navigation',
+      '~/components/UI-Components'
     ]
   },
 
