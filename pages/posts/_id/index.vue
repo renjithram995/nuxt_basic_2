@@ -2,13 +2,13 @@
   <div class="single-post-page">
     <section class="post">
       <h1 class="post-title">
-        Title of the post
+        {{ loadedPosts.title }}
       </h1>
       <div class="post-details">
-        <div>Last updated on xxx</div>
-        <div>Written by NAME</div>
+        <div>{{ loadedPosts.updateDate }}</div>
+        <div>{{ loadedPosts.author }}</div>
       </div>
-      <p>Content of the post</p>
+      <p>{{ loadedPosts.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -21,8 +21,28 @@
 
 <script>
 export default {
-  name: "PostSpecific",
-};
+  name: 'PostSpecific',
+  asyncData (context, callBack) {// Nuxt will execute this method only in pages component
+    // will not get this keyword
+    // loadedpost will get created by the callback object parameter
+    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
+    setTimeout(() => {
+      callBack(null, {
+        loadedPosts:
+          {
+            id: '1',
+            title: 'First post (Id: ' + context.params.id + ')',
+            previewText: 'Preview Text',
+            author: 'Renjith ram',
+            updateDate: new Date().toISOString(),
+            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vero rem aut! Aliq',
+            thumbnail: require('~/assets/images/shoe-1.png')
+          }
+
+      })
+    }, 1500)
+  }
+}
 </script>
 
 <style scoped>

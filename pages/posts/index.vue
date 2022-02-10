@@ -1,12 +1,17 @@
 <template>
   <div class="posts-page">
-    <PostList />
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PostIndex'
+  name: 'PostIndex',
+  computed: {
+    loadedPosts () {
+      return this.$store.getters.loadedPosts
+    }
+  }
 }
 </script>
 

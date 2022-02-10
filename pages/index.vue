@@ -10,35 +10,11 @@
 <script>
 export default {
   name: 'IndexPage',
-  asyncData (context, callback) { // Nuxt will execute this method only in pages component
-    // will not get this keyword
-    console.log('context')
-    // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    setTimeout(() => {
-      callback(null, { // pass error as null
-        loadedPosts: [
-          {
-            id: '1',
-            title: 'Preview Title',
-            previewText: 'Preview Text',
-            thumbnail: require('~/assets/images/shoe-1.png')
-          },
-          {
-            id: '2',
-            title: 'Preview Title2',
-            previewText: 'Lorem asdasdasd',
-            thumbnail: require('~/assets/images/shoe-2.png')
-          }
-        ]
-      })
-    }, 1500)
-  },
-  data () {
-    return {
-      loadedPosts: []
+  computed: {
+    loadedPosts () {
+      return this.$store.getters.loadedPosts
     }
-  },
-  created () { }
+  }
 }
 </script>
 

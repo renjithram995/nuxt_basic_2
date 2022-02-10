@@ -1,11 +1,15 @@
 <template>
   <section class="featured-posts">
-    <post-preview id="1" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-1.png')" />
-    <post-preview id="2" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-2.png')" />
-    <post-preview id="3" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-3.png')" />
-    <post-preview id="4" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-4.png')" />
-    <post-preview id="5" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-5.png')" />
-    <post-preview id="6" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-6.png')" />
+    <post-preview
+      v-for="post in posts"
+      :id="post.id"
+      :key="post.id"
+      :is-admin="isAdmin"
+      :title="post.title"
+      :preview-text="post.previewText"
+      :thumbnail="post.thumbnail"
+    />
+    <!-- <post-preview id="1" :is-admin="isAdmin" title="Preview title" preview-text="PreviewText" :thumbnail="require('~/assets/images/shoe-1.png')" /> -->
   </section>
 </template>
 
@@ -15,6 +19,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }
