@@ -5,7 +5,7 @@
         {{ loadedPosts.title }}
       </h1>
       <div class="post-details">
-        <div>{{ loadedPosts.updateDate }}</div>
+        <div>{{ loadedPosts.updateDate | datefilter }}</div>
         <div>{{ loadedPosts.author }}</div>
       </div>
       <p>{{ loadedPosts.content }}</p>
@@ -71,6 +71,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 5px;
 }
 
 @media (min-width: 768px) {

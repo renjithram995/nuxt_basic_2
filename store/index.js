@@ -49,7 +49,7 @@ const createStore = () => {
       addPost (vuexContext, data) {
         let postData = {
           ...data,
-          updateDate: new Date()
+          updateDate: new Date().toISOString()
         }
         return axios
           .post(
@@ -67,7 +67,7 @@ const createStore = () => {
       editPost (vuexContext, data) {
         const postData = {
           ...data,
-          updateDate: new Date()
+          updateDate: new Date().toISOString()
         }
         return axios.put(process.env.baseURL + '/posts/' + data.id + '.json', postData).then((result) => {
           vuexContext.commit('upsertPostData', postData)
