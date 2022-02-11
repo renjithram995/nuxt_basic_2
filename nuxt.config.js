@@ -32,9 +32,9 @@ export default {
   components: {
     dirs: [
       '~/components',
-      '~/components/posts',
-      '~/components/Navigation',
-      '~/components/UI-Components'
+      { path: '~/components/posts', extensions: ['vue'] },
+      { path: '~/components/Navigation', extensions: ['vue'] },
+      { path: '~/components/UI-Components', extensions: ['vue'] },
     ]
   },
 
@@ -80,5 +80,9 @@ export default {
         redirect: '/'
       })
     }
+  },
+  transition: {
+    name: 'home',
+    mode: 'out-in'
   }
 }

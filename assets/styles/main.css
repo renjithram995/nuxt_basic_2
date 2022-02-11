@@ -68,3 +68,12 @@ body{
 body, html,input, select, textarea, button {
     font-family: 'Open Sans', sans-serif;
 }
+
+.home-enter-active,
+.home-leave-active {
+  transition: opacity 0.5s;
+}
+.home-enter,
+.home-leave-to {
+  opacity: 0;
+}
