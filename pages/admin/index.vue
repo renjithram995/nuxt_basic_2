@@ -13,13 +13,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'AdminIndex',
   layout: 'admin',
   computed: {
-    loadedPosts () {
-      return this.$store.getters.loadedPosts
-    }
+    ...mapState(['loadedPosts'])
   }
 }
 </script>

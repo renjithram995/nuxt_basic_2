@@ -12,7 +12,7 @@ export default {
   name: 'IndexPage',
   computed: {
     loadedPosts () {
-      return this.$store.getters.loadedPosts
+      return this.$store.getters.getLoadedPosts
     }
   }
 }

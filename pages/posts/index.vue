@@ -9,7 +9,7 @@ export default {
   name: 'PostIndex',
   computed: {
     loadedPosts () {
-      return this.$store.getters.loadedPosts
+      return this.$store.getters.getLoadedPosts
     }
   }
 }
