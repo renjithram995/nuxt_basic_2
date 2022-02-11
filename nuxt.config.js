@@ -70,5 +70,15 @@ export default {
   },
   env: {
     baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com'
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'index',
+        path: '*',
+        component: resolve(__dirname, 'pages/index.vue'),
+        redirect: '/'
+      })
+    }
   }
 }
