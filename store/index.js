@@ -25,7 +25,7 @@ const createStore = () => {
       nuxtServerInit (vuexContext, context) {
         return axios
           .get(
-            'https://nuxt-sample-11-02-default-rtdb.firebaseio.com/posts.json'
+            process.env.baseURL + '/posts.json'
           )
           .then((response) => {
             const postArray = []
@@ -53,7 +53,7 @@ const createStore = () => {
         }
         return axios
           .post(
-            'https://nuxt-sample-11-02-default-rtdb.firebaseio.com/posts.json',
+            process.env.baseURL + '/posts.json',
             postData
           )
           .then((result) => {
@@ -69,7 +69,7 @@ const createStore = () => {
           ...data,
           updateDate: new Date()
         }
-        return axios.put('https://nuxt-sample-11-02-default-rtdb.firebaseio.com/posts/' + data.id + '.json', postData).then((result) => {
+        return axios.put(process.env.baseURL + '/posts/' + data.id + '.json', postData).then((result) => {
           vuexContext.commit('upsertPostData', postData)
         }).catch((err) => {
           console.error(err)

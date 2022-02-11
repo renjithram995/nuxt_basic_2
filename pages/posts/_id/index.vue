@@ -27,13 +27,16 @@ export default {
     // will not get this keyword
     // loadedpost will get created by the callback object parameter
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    return axios.get('https://nuxt-sample-11-02-default-rtdb.firebaseio.com/posts/' + context.params.id + '.json').then((result) => {
+    return axios.get(process.env.baseURL + '/posts/' + context.params.id + '.json').then((result) => {
       callBack(null, {
         loadedPosts: { ...result.data, id: context.params.id }
       })
     }).catch((err) => {
       context.error(err)
     })
+  },
+  head: {
+    title: 'page titile' // html head can get editted by this hook only on page components
   }
 }
 </script>

@@ -67,5 +67,8 @@ export default {
     name: 'circle',
     color: '#3B8070',
     background: 'white'
+  },
+  env: {
+    baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com'
   }
 }
