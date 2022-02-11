@@ -8,10 +8,16 @@
       Title
     </AppControlInput>
 
-    <AppControlInput v-model="editedPost.thumbnailLink">
+    <AppControlInput v-model="editedPost.thumbnail">
       Thumbnail Link
     </AppControlInput>
 
+    <AppControlInput
+      v-model="editedPost.previewText"
+      control-type="textarea"
+    >
+      Preview Text
+    </AppControlInput>
     <AppControlInput
       v-model="editedPost.content"
       control-type="textarea"
@@ -50,8 +56,9 @@ export default {
         : {
             author: '',
             title: '',
-            thumbnailLink: '',
-            content: ''
+            thumbnail: '',
+            content: '',
+            previewText: ''
           }
     }
   },
@@ -60,6 +67,7 @@ export default {
       this.$router.push('/admin')
     },
     onSubmit () {
+      this.$emit('submit', this.editedPost)
     //   this.$router.push('/admin')
     }
   }

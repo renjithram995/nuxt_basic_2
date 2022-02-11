@@ -20,27 +20,20 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'PostSpecific',
   asyncData (context, callBack) { // Nuxt will execute this method only in pages component
     // will not get this keyword
     // loadedpost will get created by the callback object parameter
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    setTimeout(() => {
+    return axios.get('https://nuxt-sample-11-02-default-rtdb.firebaseio.com/posts/' + context.params.id + '.json').then((result) => {
       callBack(null, {
-        loadedPosts:
-          {
-            id: '1',
-            title: 'First post (Id: ' + context.params.id + ')',
-            previewText: 'Preview Text',
-            author: 'Renjith ram',
-            updateDate: new Date().toISOString(),
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vero rem aut! Aliq',
-            thumbnail: require('~/assets/images/shoe-1.png')
-          }
-
+        loadedPosts: { ...result.data, id: context.params.id }
       })
-    }, 1500)
+    }).catch((err) => {
+      context.error(err)
+    })
   }
 }
 </script>
