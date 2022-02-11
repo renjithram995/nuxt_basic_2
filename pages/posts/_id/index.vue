@@ -20,14 +20,13 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'PostSpecific',
   asyncData (context, callBack) { // Nuxt will execute this method only in pages component
     // will not get this keyword
     // loadedpost will get created by the callback object parameter
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    return axios.get(process.env.baseURL + '/posts/' + context.params.id + '.json').then((result) => {
+    return context.app.$axios.get(process.env.baseURL + '/posts/' + context.params.id + '.json').then((result) => {
       callBack(null, {
         loadedPosts: { ...result.data, id: context.params.id }
       })

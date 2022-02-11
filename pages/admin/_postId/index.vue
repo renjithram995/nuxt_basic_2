@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import AdminPostForm from '~/components/Admin/AdminPostForm.vue'
 export default {
   name: 'AdminPostData',
@@ -17,7 +16,7 @@ export default {
     // will not get this keyword
     // loadedpost will get created by the callback object parameter
     // eslint-disable-next-line nuxt/no-timing-in-fetch-data
-    return axios.get(process.env.baseURL + '/posts/' + context.params.postId + '.json').then((result) => {
+    return context.app.$axios.get('/posts/' + context.params.postId + '.json').then((result) => {
       callBack(null, {
         loadedPost: { ...result.data, id: context.params.postId }
       })

@@ -1,5 +1,4 @@
 import { Store } from 'vuex'
-import axios from 'axios'
 
 const createStore = () => {
   return new Store({
@@ -23,18 +22,18 @@ const createStore = () => {
     },
     actions: {
       nuxtServerInit (vuexContext, context) {
-        return axios
-          .get(
+        return context.app.$axios
+          .$get(
             process.env.baseURL + '/posts.json'
           )
-          .then((response) => {
+          .then((data) => {
             const postArray = []
-            for (const key in response.data) {
+            for (const key in data) {
               postArray.push({
                 id: key,
-                title: response.data[key].title,
-                previewText: response.data[key].previewText,
-                thumbnail: response.data[key].thumbnail
+                title: data[key].title,
+                previewText: data[key].previewText,
+                thumbnail: data[key].thumbnail
               })
             }
             vuexContext.commit('setPosts', postArray)
@@ -51,17 +50,17 @@ const createStore = () => {
           ...data,
           updateDate: new Date().toISOString()
         }
-        return axios
-          .post(
+        return this.$axios
+          .$post(
             process.env.baseURL + '/posts.json',
             postData
           )
-          .then((result) => {
-            postData = { ...postData, id: result.data?.name }
+          .then((data) => {
+            postData = { ...postData, id: data?.name }
             vuexContext.commit('upsertPostData', postData)
           })
           .catch((e) => {
-            console.log(e)
+            console.error(e)
           })
       },
       editPost (vuexContext, data) {
@@ -69,7 +68,7 @@ const createStore = () => {
           ...data,
           updateDate: new Date().toISOString()
         }
-        return axios.put(process.env.baseURL + '/posts/' + data.id + '.json', postData).then((result) => {
+        return this.$axios.put(process.env.baseURL + '/posts/' + data.id + '.json', postData).then(() => {
           vuexContext.commit('upsertPostData', postData)
         }).catch((err) => {
           console.error(err)

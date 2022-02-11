@@ -35,7 +35,7 @@ export default {
       '~/components',
       { path: '~/components/posts', extensions: ['vue'] },
       { path: '~/components/Navigation', extensions: ['vue'] },
-      { path: '~/components/UI-Components', extensions: ['vue'] },
+      { path: '~/components/UI-Components', extensions: ['vue'] }
     ]
   },
 
@@ -54,7 +54,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -70,12 +70,12 @@ export default {
     background: 'white'
   },
   env: {
-    baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com'
+    baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com/'
   },
   router: {
-    extendRoutes(routes, resolve) {
+    extendRoutes (routes, resolve) {
       routes.push({
-        name: 'index',
+        name: 'default',
         path: '*',
         component: resolve(__dirname, 'pages/index.vue'),
         redirect: '/'
