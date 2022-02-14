@@ -19,6 +19,8 @@ export default {
     ]
   },
 
+  target: 'static',
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/styles/main.css'
@@ -74,6 +76,7 @@ export default {
     fbApiKey: 'AIzaSyDKXuLqw2f5XM84-KAIAzv56ze__CfnTDA'
   },
   router: {
+    base: '/nuxt_basic_2/',
     extendRoutes (routes, resolve) {
       routes.push({
         name: 'default',
