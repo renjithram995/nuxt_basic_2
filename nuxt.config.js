@@ -96,6 +96,6 @@ export default {
   },
   generate: {
     dir: 'docs',
-    fallback: 'index.html'
+    fallback: '404.html'
   }
 }
