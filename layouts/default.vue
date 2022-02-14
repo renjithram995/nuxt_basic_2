@@ -14,6 +14,9 @@ export default {
       displaySideNav: false
     }
   },
+  created () {
+    this.$store.dispatch('initalizePosts', this.$axios)
+  },
   methods: { }
 }
 </script>

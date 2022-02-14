@@ -27,7 +27,13 @@ const createStore = () => {
     },
     actions: {
       nuxtServerInit (vuexContext, context) {
-        return context.app.$axios
+        return vuexContext.dispatch('initalizePosts', context.app.$axios)
+          .catch((err) => {
+            return context.error(new Error(err))
+          })
+      },
+      initalizePosts (vuexContext, axios) {
+        return axios
           .$get(
             process.env.baseURL + '/posts.json'
           )
@@ -42,9 +48,6 @@ const createStore = () => {
               })
             }
             vuexContext.commit('setPosts', postArray)
-          })
-          .catch((err) => {
-            return context.error(new Error(err))
           })
       },
       setPosts (vuexContext, posts) {
