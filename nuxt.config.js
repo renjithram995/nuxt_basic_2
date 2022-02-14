@@ -1,6 +1,6 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -90,5 +90,8 @@ export default {
   },
   server: {
     port: 8000 // default: 3000
+  },
+  generate: {
+    dir: 'docs'
   }
 }
