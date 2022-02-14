@@ -22,7 +22,6 @@
 <script>
 export default {
   name: 'PostSpecific',
-  middleware: 'auth',
   asyncData (context, callBack) { // Nuxt will execute this method only in pages component
     // will not get this keyword
     // loadedpost will get created by the callback object parameter

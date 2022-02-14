@@ -29,6 +29,7 @@
 export default {
   name: 'AdminAuthPage',
   layout: 'admin',
+  middleware: 'auth',
   data () {
     return {
       isLogin: true,

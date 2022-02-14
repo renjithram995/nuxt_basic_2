@@ -10,7 +10,6 @@
 <script>
 export default {
   name: 'IndexPage',
-  middleware: ['auth'],
   computed: {
     loadedPosts () {
       return this.$store.getters.getLoadedPosts

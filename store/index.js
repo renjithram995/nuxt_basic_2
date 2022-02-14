@@ -1,4 +1,5 @@
 import { Store } from 'vuex'
+import Cookies from 'js-cookie'
 
 const createStore = () => {
   return new Store({
@@ -92,26 +93,49 @@ const createStore = () => {
         return this.$axios.$post(authUrl, userData).then((result) => {
           vuexContext.commit('setToken', result.idToken)
           localStorage.setItem('token', result.idToken)
-          const tokenExpiresIn = (new Date().getTime() + result.expiresIn * 1000)
+          Cookies.set('jwt', result.idToken)
+
+          const tokenExpiresIn = ((new Date().getTime() + Number(result.expiresIn) * 1000))
           localStorage.setItem('tokenExpiration', tokenExpiresIn)
-          vuexContext.dispatch('setLogoutTimer', result.expiresIn * 1000)
+          Cookies.set('tokenExpiration', tokenExpiresIn)
         }).catch((err) => {
           console.log(err)
         })
       },
-      setLogoutTimer (vuexContext, duration) {
-        setTimeout(() => {
-          vuexContext.commit('setToken', '')
-        }, duration)
-      },
-      initAuth (vuexContext) {
-        const token = localStorage.getItem('token')
-        const tokenExpiresIn = Number(localStorage.getItem('tokenExpiration'))
+      initAuth (vuexContext, req) {
+        let token = ''
+        let tokenExpiresIn = 0
+        if (req) {
+          try {
+            const jwtCookie = req.headers.cookie
+              .split(';')
+              .find(c => c.trim().startsWith('jwt='))
+            token = jwtCookie.split('=')[1]
+            tokenExpiresIn = Number(req.headers.cookie
+              .split(';')
+              .find(c => c.trim().startsWith('tokenExpiration='))
+              .split('=')[1])
+          } catch {
+            return
+          }
+        } else {
+          token = localStorage.getItem('token')
+          tokenExpiresIn = Number(localStorage.getItem('tokenExpiration'))
+        }
         if (!token || new Date() > tokenExpiresIn) {
+          vuexContext.dispatch('logOut')
           return
         }
         vuexContext.commit('setToken', token)
-        vuexContext.dispatch('setLogoutTimer', tokenExpiresIn - new Date().getTime())
+      },
+      logOut (vuexContext) {
+        vuexContext.commit('setToken', '')
+        Cookies.remove('jwt')
+        Cookies.remove('tokenExpiration')
+        if (process.browser) {
+          localStorage.removeItem('token')
+          localStorage.removeItem('tokenExpiration')
+        }
       }
     },
     getters: {

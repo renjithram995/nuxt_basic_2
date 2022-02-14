@@ -1,8 +1,11 @@
 <template>
   <div class="admin-page">
     <section class="new-post">
-      <app-button data-ram="asdasd" @click="$router.push('/admin/new-post')">
+      <app-button @click="$router.push('/admin/new-post')">
         Create Post
+      </app-button>
+      <app-button @click="logOut">
+        Log out
       </app-button>
     </section>
     <section class="existing-posts">
@@ -20,6 +23,12 @@ export default {
   middleware: 'auth',
   computed: {
     ...mapState(['loadedPosts'])
+  },
+  methods: {
+    logOut () {
+      this.$store.dispatch('logOut')
+      this.$router.push('/admin/auth')
+    }
   }
 }
 </script>

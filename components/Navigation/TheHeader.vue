@@ -25,6 +25,9 @@
               Admin
             </nuxt-link>
           </li>
+          <li v-if="authToken" class="nav-item">
+            <a @click="logOut">Log out</a>
+          </li>
         </ul>
       </div>
     </header>
@@ -33,8 +36,18 @@
 
 <script>
 
+import { mapState } from 'vuex'
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  computed: {
+    ...mapState(['authToken'])
+  },
+  methods: {
+    logOut () {
+      this.$store.dispatch('logOut')
+      this.$router.push('/admin/auth')
+    }
+  }
 }
 </script>
 
@@ -94,6 +107,7 @@ export default {
 .nav-item a {
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 .nav-item a:hover,
