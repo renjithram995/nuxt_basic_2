@@ -70,7 +70,8 @@ export default {
     background: 'white'
   },
   env: {
-    baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com/'
+    baseURL: process.env.baseURL || 'https://nuxt-sample-11-02-default-rtdb.firebaseio.com/',
+    fbApiKey: 'AIzaSyDKXuLqw2f5XM84-KAIAzv56ze__CfnTDA'
   },
   router: {
     extendRoutes (routes, resolve) {
@@ -80,7 +81,8 @@ export default {
         component: resolve(__dirname, 'pages/index.vue'),
         redirect: '/'
       })
-    }
+    },
+    middleware: 'check-auth'
   },
   transition: {
     name: 'home',

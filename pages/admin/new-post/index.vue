@@ -12,6 +12,7 @@ export default {
   name: 'AdminCreatePostForm',
   components: { AdminPostForm },
   layout: 'admin',
+  middleware: 'auth',
   methods: {
     onSubmitSave (data) {
       this.$store.dispatch('addPost', data).then(() => {

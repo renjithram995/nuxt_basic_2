@@ -7,6 +7,7 @@
 <script>
 export default {
   name: 'PostIndex',
+  middleware: 'auth',
   computed: {
     loadedPosts () {
       return this.$store.getters.getLoadedPosts

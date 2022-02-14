@@ -17,6 +17,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'AdminIndex',
   layout: 'admin',
+  middleware: 'auth',
   computed: {
     ...mapState(['loadedPosts'])
   }

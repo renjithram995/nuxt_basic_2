@@ -12,6 +12,7 @@ export default {
   name: 'AdminPostData',
   components: { AdminPostForm },
   layout: 'admin',
+  middleware: 'auth',
   asyncData (context, callBack) { // Nuxt will execute this method only in pages component
     // will not get this keyword
     // loadedpost will get created by the callback object parameter
@@ -28,6 +29,8 @@ export default {
     onSubmitEdit (data) {
       this.$store.dispatch('editPost', data).then((result) => {
         this.$router.push('/admin')
+      }).catch((err) => {
+        console.log(err)
       })
     }
   }

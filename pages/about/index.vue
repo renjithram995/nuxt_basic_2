@@ -11,7 +11,8 @@
 
 <script>
 export default {
-  name: 'AboutIndex'
+  name: 'AboutIndex',
+  middleware: 'auth'
 }
 </script>
 
