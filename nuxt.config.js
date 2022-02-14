@@ -87,5 +87,8 @@ export default {
   transition: {
     name: 'home',
     mode: 'out-in'
+  },
+  server: {
+    port: 8000 // default: 3000
   }
 }
