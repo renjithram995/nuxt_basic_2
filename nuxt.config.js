@@ -95,6 +95,7 @@ export default {
     port: 8000 // default: 3000
   },
   generate: {
-    dir: 'docs'
+    dir: 'docs',
+    fallback: 'index.html'
   }
 }
